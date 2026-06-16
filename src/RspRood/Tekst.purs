@@ -136,7 +136,7 @@ main = void $ unsafePartial do
       _ -> colorSchemes.whiteRed
 
   let
-    logoScale = 0.07
+    logoScale = 0.14
     logos =
       { rsp:
           { width: 4960.0

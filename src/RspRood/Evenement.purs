@@ -72,7 +72,7 @@ main = void $ unsafePartial do
       }
 
   let
-    logoScale = 0.0567
+    logoScale =  0.1134
     logos =
       { rsp:
           { width: 4960.0

@@ -58,7 +58,7 @@ main = void $ unsafePartial do
     barHeight = 160.0 * templateResolution
 
   let
-    logoScale = 0.07
+    logoScale = 0.14
     logos =
       { rsp:
           { width: 4960.0
