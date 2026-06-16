@@ -28,7 +28,7 @@ import Sjablong.Layer.Undraggable (mkUndraggable, mkUndraggableHorizontal)
 import Sjablong.Main (addEventListeners, connectCheckbox, connectCheckboxPure, connectObjectUrlInput, connectRange, connectScaleRange, connectSelect, connectTextArea, mkDownloadButton, mkTemplate, mkTemplateContext, redraw)
 
 instagramDimensions :: Dimensions
-instagramDimensions = { width: 1080.0, height: 1080.0 * 5.0 / 4.0 }
+instagramDimensions = { width: 1080.0, height: 1080.0 * 4.0 / 3.0 }
 
 templateResolution :: Number
 templateResolution = 2.0
@@ -74,6 +74,12 @@ main = void $ unsafePartial do
           { width: 2469.0
           , height: 2469.0
           , variants: { red: "img/rood/rood_rood.png", white: "img/rood/rood_wit.png" }
+          }
+      , roodGroningen:
+          {
+            width: 1053.0
+          , height: 1024.0
+          , variants: { red: "img/rood/rood_groningen_rood.png" }
           }
       , rspRood:
           { width: 8000.0
