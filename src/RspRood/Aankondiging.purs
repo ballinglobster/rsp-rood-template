@@ -79,7 +79,7 @@ main = void $ unsafePartial do
           {
             width: 2538.0
           , height: 2469.0
-          , variants: { red: "img/rood/rood_groningen_rood.png" }
+          , variants: { red: "img/rood/rood_groningen_rood.png", white: "img/rood/rood_groningen_white.png" }
           }
       , rspRood:
           { width: 8000.0
