@@ -97,6 +97,7 @@ main = void $ unsafePartial do
   connectSelect templateContext "logo" logoLayer \name ->
     let
       logo = case name of
+        "rood-groningen" -> logos.roodGroningen
         "rsp" -> logos.rsp
         "rsp-vertical" -> logos.rspVertical
         "rood" -> logos.rood
