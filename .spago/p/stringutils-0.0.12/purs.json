@@ -1,0 +1,19 @@
+{
+  "name": "stringutils",
+  "version": "0.0.12",
+  "license": "Apache-2.0",
+  "location": {
+    "githubOwner": "menelaos",
+    "githubRepo": "purescript-stringutils"
+  },
+  "ref": "v0.0.12",
+  "dependencies": {
+    "arrays": ">=7.0.0 <8.0.0",
+    "functions": ">=6.0.0 <7.0.0",
+    "integers": ">=6.0.0 <7.0.0",
+    "maybe": ">=6.0.0 <7.0.0",
+    "prelude": ">=6.0.0 <7.0.0",
+    "strings": ">=6.0.0 <7.0.0",
+    "unsafe-coerce": ">=6.0.0 <7.0.0"
+  }
+}
