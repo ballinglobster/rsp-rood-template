@@ -127,8 +127,8 @@ main = void $ unsafePartial do
       }
   campagneLogoLayer <- mkRefLayer =<< mkImageLayer
     campagneLogos.campagne.variants.colour
-    { x: templateWidth - campagneLogos.campagne.width * campagneLogoScale - 32.0 * templateResolution
-    , y: templateHeight - barHeight + (barHeight - campagneLogos.campagne.height * campagneLogoScale) / 2.0
+    { x: 0.0
+    , y: 0.0
     }
     { scaleX: campagneLogoScale, scaleY: campagneLogoScale }
     Canvas.SourceOver
@@ -138,8 +138,8 @@ main = void $ unsafePartial do
         "pride-campagne" -> campagneLogos.prideCampagne
         _ -> campagneLogos.campagne
       pos =
-        { x: templateWidth - campagneLogo.width * campagneLogoScale - 32.0 * templateResolution
-        , y: templateHeight - barHeight + (barHeight - campagneLogo.height * campagneLogoScale) / 2.0
+        { x: 0.0
+        , y: 0.0
         }
     in
       ImageLayer.loadImage campagneLogo.variants.colour <<< ImageLayer.setPosition pos
@@ -198,6 +198,7 @@ main = void $ unsafePartial do
     layers = mkSomeLayers @Effect
       [ mkSomeLayer $ transformedTitleLayer
       , mkSomeLayer $ mkUndraggable logoLayer
+      , mkSomeLayer $ mkUndraggable campagneLogoLayer
       , mkSomeLayer $ mkUndraggable $ mkRectangleLayer { x: 0.0, y: templateHeight - barHeight, width: templateWidth, height: barHeight } "#fff"
       , mkSomeLayer imageLayer
       , mkSomeLayer $ mkUndraggable $ mkRectangleLayer { x: 0.0, y: 0.0, width: templateWidth, height: templateHeight } "#333"
