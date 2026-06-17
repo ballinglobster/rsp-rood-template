@@ -123,6 +123,40 @@ main = void $ unsafePartial do
     in
       ImageLayer.loadImage logo.path <<< ImageLayer.setPosition pos
 
+  let
+    campagneLogoScale = 1.0
+    campagneLogos =
+      {
+        campagne:
+          { width: 375.0
+          , height: 375.0
+          , variants: { colour: "img/campagne/test.png" }
+          },
+        prideCampagne:
+          { width: 375.0
+          , height: 290.98
+          , variants: { colour: "img/pride-campagne/logo.png" }
+          }
+      }
+  campagneLogoLayer <- mkRefLayer =<< mkImageLayer
+    campagneLogos.campagne.variants.colour
+    { x: templateWidth - 375.0 - 50.0
+    , y: 2575.0
+    }
+    { scaleX: campagneLogoScale, scaleY: campagneLogoScale }
+    Canvas.SourceOver
+  connectSelect templateContext "campagneLogo" campagneLogoLayer \name ->
+    let
+      campagneLogo = case name of
+        "pride-campagne" -> campagneLogos.prideCampagne
+        _ -> campagneLogos.campagne
+      pos =
+        { x: templateWidth - 375.0 - 50.0
+        , y: 2575.0
+        }
+    in
+      ImageLayer.loadImage campagneLogo.variants.colour <<< ImageLayer.setPosition pos
+
   subtitleLayer <- mkRefLayer $ TextLayer
     { text: ""
     , lineHeight: 1.0
@@ -196,6 +230,7 @@ main = void $ unsafePartial do
       [ mkSomeLayer $ transformedTitleLayer
       , mkSomeLayer $ mkUndraggable subtitleLayer
       , mkSomeLayer $ mkUndraggable logoLayer
+      , mkSomeLayer $ mkUndraggable campagneLogoLayer
       , mkSomeLayer gradientLayer
       , mkSomeLayer imageLayer
       , mkSomeLayer $ mkUndraggable $ mkRectangleLayer { x: 0.0, y: 0.0, width: templateWidth, height: templateHeight } "#333"
