@@ -111,6 +111,40 @@ main = void $ unsafePartial do
       ImageLayer.loadImage logo.variants.red <<< ImageLayer.setPosition pos
 
   let
+    campagneLogoScale = 1.0
+    campagneLogos =
+      {
+        campagne:
+          { width: 375.0
+          , height: 375.0
+          , variants: { colour: "img/campagne/test.png" }
+          },
+        prideCampagne:
+          { width: 375.0
+          , height: 290.98
+          , variants: { colour: "img/pride-campagne/logo.png" }
+          }
+      }
+  campagneLogoLayer <- mkRefLayer =<< mkImageLayer
+    campagneLogos.campagne.variants.colour
+    { x: templateWidth - campagneLogos.campagne.width * campagneLogoScale - 32.0 * templateResolution
+    , y: templateHeight - barHeight + (barHeight - campagneLogos.campagne.height * campagneLogoScale) / 2.0
+    }
+    { scaleX: campagneLogoScale, scaleY: campagneLogoScale }
+    Canvas.SourceOver
+  connectSelect templateContext "campagneLogo" campagneLogoLayer \name ->
+    let
+      campagneLogo = case name of
+        "pride-campagne" -> campagneLogos.prideCampagne
+        _ -> campagneLogos.campagne
+      pos =
+        { x: templateWidth - campagneLogo.width * campagneLogoScale - 32.0 * templateResolution
+        , y: templateHeight - barHeight + (barHeight - campagneLogo.height * campagneLogoScale) / 2.0
+        }
+    in
+      ImageLayer.loadImage campagneLogo.variants.colour <<< ImageLayer.setPosition pos
+
+  let
     textBoxPadding = { paddingX: 0.1, paddingY: 0.075 }
     textBoxShadowOffset = { offsetX: 0.15, offsetY: 0.15 }
     textBoxShadowOpacity = 0.4
