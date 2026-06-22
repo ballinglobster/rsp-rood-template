@@ -54,6 +54,14 @@ main = void $ unsafePartial do
   Just templateContext <- mkTemplateContext "canvas" templateDimensions
   canvasContext <- Canvas.getContext2D templateContext.canvas
 
+  textureLayer <- mkRefLayer $ mkRectangleLayer
+    { x: 0.0
+    , y: 0.0
+    , width: templateWidth
+    , height: 2982.0
+    }
+    "img/Papier-Design.png"
+
   backgroundLayer <- mkRefLayer $ mkRectangleLayer
     { x: 0.0
     , y: 0.0
@@ -283,6 +291,7 @@ main = void $ unsafePartial do
       [ mkSomeLayer $ transformedTitleLayer
       , mkSomeLayer $ mkUndraggableHorizontal bodyTextLayer
       , mkSomeLayer $ mkUndraggable logoLayer
+      , mkSomeLayer $ mkUndraggable textureLayer
       , mkSomeLayer $ mkUndraggable backgroundLayer
       ]
 
